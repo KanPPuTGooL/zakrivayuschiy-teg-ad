@@ -9,3 +9,111 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
+
+/* Начальное состояние сердечка */
+
+/* Контур сердца - чёрный */
+.like-icon .contour {
+  fill: var(--contour-color);
+  transition: fill 0.1s linear;
+}
+
+/* Основное тело сердца - прозрачное */
+.like-icon .main-body {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+/* Ядро сердца - прозрачное, с небольшой задержкой */
+.like-icon .core {
+  fill: transparent;
+  transition: fill 0.3s linear 0.03s;
+}
+
+/* Искры вокруг сердца - скрыты */
+.like-icon .sparks {
+  opacity: 0;
+}
+
+/* Hover эффект (только если не лайкнуто) */
+
+/* При наведении тело сердца заполняется чёрным */
+.card__icon-button:hover .like-icon:not(.is-liked) .main-body {
+  fill: var(--contour-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+/* При наведении ядро тоже заполняется чёрным */
+.card__icon-button:hover .like-icon:not(.is-liked) .core {
+  fill: var(--contour-color);
+  transition: fill 0.3s linear;
+}
+
+/* Активное состояние (нажатие, только если не лайкнуто) */
+
+/* При нажатии тело становится красным, контур остаётся чёрным */
+.card__icon-button:active .like-icon:not(.is-liked) .main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+/* При нажатии ядро тоже становится красным */
+.card__icon-button:active .like-icon:not(.is-liked) .core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear;
+}
+
+/* Лайкнутое состояние */
+
+/* Контур становится красным с задержкой */
+.like-icon.is-liked .contour {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear 0.06s;
+}
+
+/* Тело становится красным */
+.like-icon.is-liked .main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+/* Ядро становится красным */
+.like-icon.is-liked .core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear;
+}
+
+/* Анимация появления лайка */
+
+/* Сердце немного увеличивается при лайке */
+.like-icon.is-liked {
+  animation: like-scale 0.3s ease-in 0.1s alternate;
+  transform-origin: center;
+}
+
+/* Искры появляются с задержкой */
+.like-icon.is-liked .sparks {
+  animation: sparks-appear 0.3s ease-in 0.3s alternate;
+}
+
+/* Keyframes */
+
+/* Анимация увеличения сердца */
+@keyframes like-scale {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  }
+}
+
+/* Анимация появления искр */
+@keyframes sparks-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
