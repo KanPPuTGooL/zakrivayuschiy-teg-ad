@@ -1,1 +1,1 @@
-https://kanpputgool.github.io/zakrivayuschiy-teg-ad/
+https://github.com/kanpputgool/zakrivayuschiy-teg-ad
